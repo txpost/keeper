@@ -1,0 +1,78 @@
+body {
+	max-width: 600px;
+}
+
+#players {
+	float: right;
+	width: 50%;
+	/*display: none;*/
+}
+
+#teams {
+	/*display: none;*/
+	float: left;
+	width: 50%;
+}
+
+#team1, #team2, #team3, #team4, #team5, #team6, #team7, #team8, #team9, #team10 {
+	
+}
+
+#players a:hover {
+	color: green;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	display: inline;
+	margin-right: 10px;
+}
+
+li a {
+	text-decoration: underline;
+	color: #999;
+}
+
+li a:hover {
+	text-decoration: none;
+	color: #333;
+}
+
+.teamHeader {
+	display: inline-block;
+	font-size: 1.5em;
+	-webkit-margin-before: 0.83em;
+	-webkit-margin-after: 0.83em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+}
+
+#results {
+	float: left;
+	clear: left;
+	margin: 100px 0;
+}
+
+#instructions {
+	font-size: 1.25em;
+	color: red;
+}
+
+#startButton {
+	background-color: #090;
+	padding: 10px 30px;
+	border-style: none;
+	border-radius: 5px;
+	color: white;
+	margin: 20px 0;
+}
+
+#startButton:hover {
+	background-color: #0a0;
+}

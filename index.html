@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>Fantasy Football Keeper League Draft Simulator</title>
+	<link rel="icon" type="image/ico" href="http://trevorpostma.com/keeper/football.ico">
+</head>
+<body>
+	<ul>
+		<li><a href="http://trevorpostma.com/keeper">home</a></li>
+	</ul>
+	<p id="instructions">Configure your draft.</p>
+	<form id="form">
+		<p><a href="javascript:void(0)" onclick="config('bib')" id="bib">CLICK HERE FOR BIB KEEPER PRESETS</a></p>
+		<div class="select">
+			<select name="keepers" id="configKeepers" onchange="config()">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			keepers allowed per team
+		</div>
+		<div class="select">
+			<select name="teams" id="configTeams" onchange="config()">
+				<option value="10">10</option>
+				<option value="12">12</option>
+			</select>
+			 teams in the draft
+		</div>
+		<div id="selectKeepers">
+		</div>
+		<input type='button' onclick="configSubmit()" value="Start" id="startButton">
+	</form>
+	<div id="players">
+	</div>
+	<div id="teams">
+	</div>
+	<script type="text/javascript" src="draft.js"></script>
+</body>
+</html>
