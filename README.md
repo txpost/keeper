@@ -1,4 +1,4 @@
-keeper
+Keeper
 ======
 
-Fantasy Football Keeper League Draft Simulator
+Keeper is a fantasy football keeper league draft simulator.
