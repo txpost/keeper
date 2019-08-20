@@ -2,7 +2,10 @@
 function startDraft () {
 	// http://localhost/keeper/rankings.json
 	// http://trevorpostma.com/keeper/rankings.json
-	var url = 'http://trevorpostma.com/keeper/rankings.json';
+	// url is rankings.json hosted on internet
+	// 2017 ranks = https://api.myjson.com/bins/h819l
+	// 2018 ranks = https://api.myjson.com/bins/162bj8
+	var url = 'https://api.myjson.com/bins/16xdlj';
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
@@ -37,11 +40,19 @@ function config (preset) {
 		keepers.value = 2;
 		teams.value = 10;
 		var players = [["Jimmy Graham", 2], ["Jordy Nelson", 5], ["Alshon Jeffery", 12], [""], ["Rob Gronkowski", 5], ["Percy Harvin", 14], ["Montee Ball", 7], ["DeMarco Murray", 8], ["Keenan Allen", 13], ["Cam Newton", 14], ["Giovani Bernard", 6], ["Andrew Luck", 11], ["Adrian Peterson", 1], [""], ["Jamaal Charles", 1], ["LeSean McCoy", 2], ["Calvin Johnson", 1], ["Andre Ellington", 13], ["Eddie Lacy", 4], ["Dez Bryant", 7]];
+		//var players = [["Jay Ajayi", 11], ["Michael Thomas", 10], ["Melvin Gordon", 6], ["Dak Prescott", 15], ["David Johnson", 1], ["Jordan Howard", 15], ["Drew Brees", 8], ["Le'Veon Bell", 1], ["Antonio Brown", 1], ["Isaiah Crowell", 13]];
 	};
-
+	
+	//Custom presets for Roxbury17
+	if (preset == "rox17") {
+		keepers.value = 1;
+		teams.value = 10;
+		var players = [["George Kittle", 15], ["Phillip Lindsay", 15], ["Alvin Kamara", 10], ["Kerryon Johnson", 7], ["Adam Thielen", 8], ["Damien Williams", 15], ["Chris Carson", 9], ["Saquon Barkley", 1], ["Derrius Guice", 15], ["O.J. Howard", 15]];
+	};
+	
 	// parent of the all the keeper selection dropdowns
 	var parent = document.getElementById('selectKeepers');
-	
+
 	// remove all keeper dropdowns when a configuration change occurs
 	while (parent.firstChild) {
 		parent.removeChild(parent.firstChild);
@@ -52,7 +63,7 @@ function config (preset) {
 
 		// create keeper dropdowns for each team
 		for (var i = 0; i < teams.value; i++) {
-			
+
 			// team titles
 			var teamNumber = i + 1;
 			var team = document.createElement('p');
@@ -78,8 +89,8 @@ function config (preset) {
 				// add each player as an option
 				for (var n=0; n < NAMESPACE.rankings.length; n++) {
 					var keeperOpt = document.createElement('option');
-					keeperOpt.value = NAMESPACE.rankings[n]["Position "] + " " + NAMESPACE.rankings[n][" Player Name "] + " " + NAMESPACE.rankings[n]["Team "];
-					keeperOpt.textContent = NAMESPACE.rankings[n][" Player Name "];
+					keeperOpt.value = NAMESPACE.rankings[n]["Pos"] + " " + NAMESPACE.rankings[n]["Player"] + " " + NAMESPACE.rankings[n]["Team"];
+					keeperOpt.textContent = NAMESPACE.rankings[n]["Player"];
 					selectKeeper.appendChild(keeperOpt);
 				}
 
@@ -111,7 +122,7 @@ function config (preset) {
 			}
 		}
 	}; // end of if
-	
+
 	// update the keeper and round dropdowns if it's a BIB member
 	if (preset == "bib") {
 
@@ -124,12 +135,12 @@ function config (preset) {
 
 			// get the first keeper
 			var player1 = document.getElementById('t' + t + 'k1');
-			
+
 			// account for an empty keeper
 			if (player1 == null) {
 				break;
 			};
-			
+
 			// check each option to find keeper player
 			for (var o = 0; o < player1.options.length; o++) {
 				if (player1.options[o].text == players[m][0]) {
@@ -137,7 +148,7 @@ function config (preset) {
 					break;
 				};
 			}
-			
+
 			// set the round for the first keeper
 			document.getElementById('t' + t + 'k1round').value = players[m][1];
 
@@ -168,6 +179,43 @@ function config (preset) {
 		configSubmit();
 
 	}; // end if
+	
+	if (preset == "rox17") {
+
+		// team number
+		var t = 1;
+
+		// get the dropdown values
+		for (var m = 0; m < (players.length); m+=1) {
+			// player[m][keeper, round]
+
+			// get the first keeper
+			var player1 = document.getElementById('t' + t + 'k1');
+
+			// account for an empty keeper
+			if (player1 == null) {
+				break;
+			};
+
+			// check each option to find keeper player
+			for (var o = 0; o < player1.options.length; o++) {
+				if (player1.options[o].text == players[m][0]) {
+					player1.selectedIndex = o;
+					break;
+				};
+			}
+
+			// set the round for the first keeper
+			document.getElementById('t' + t + 'k1round').value = players[m][1];
+
+			// go to the next team
+			t++;
+		}
+
+		// autosubmit the bib presets
+		//configSubmit();
+
+	}; // end if
 }
 
 // submit the selected keepers and rounds
@@ -186,31 +234,31 @@ function configSubmit () {
 	// team needs are stored in an object
 	if (teams.value == 10) {
 		NAMESPACE.teams = {
-			team1: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team2: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team3: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team4: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team5: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team6: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team7: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team8: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team9: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team10: {qb: 1, rb: 2, wr: 3, te:1, count: 0}
+			team1: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team2: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team3: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team4: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team5: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team6: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team7: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team8: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team9: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team10: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0}
 		};
 	} else if (teams.value == 12) {
 		NAMESPACE.teams = {
-			team1: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team2: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team3: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team4: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team5: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team6: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team7: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team8: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team9: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team10: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team11: {qb: 1, rb: 2, wr: 3, te:1, count: 0},
-			team12: {qb: 1, rb: 2, wr: 3, te:1, count: 0}
+			team1: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team2: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team3: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team4: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team5: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team6: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team7: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team8: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team9: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team10: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team11: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
+			team12: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0}
 		};
 	} else {
 		NAMESPACE.teams = {};
@@ -279,7 +327,7 @@ function removeKeepers () {
 // remove the selected player from the official rankings
 function offTheBoard (player) {
 	for (var i = 0; i < NAMESPACE.rankings.length; i++) {
-		if (player.indexOf(NAMESPACE.rankings[i][" Player Name "]) > -1) {
+		if (player.indexOf(NAMESPACE.rankings[i]["Player"]) > -1) {
 			NAMESPACE.rankings.splice(i, 1);
 		}
 	}
@@ -297,11 +345,11 @@ function displayTeams () {
 
 	// add the team headers and empty positions
 	for (var i = 0; i < NAMESPACE.keeperObj.teams; i++) {
-		
+
 		// each team gets it's own div
 		var div = document.createElement('div');
 		div.id = "team" + (i + 1);
-		
+
 		// add the clickable team headers
 		var anchor = document.createElement('a');
 		anchor.href = "javascript:void(0)";
@@ -352,7 +400,7 @@ function addTeamClicks () {
 
 	// get all team headers
 	getTeams = document.getElementsByClassName('teamHeader');
-	
+
 	// add onclick event to each team name
 	for (var j = 0; j < getTeams.length; j++) {
 		getTeams[j].onclick = selectTeam;
@@ -441,7 +489,7 @@ function addKeepers () {
 
 		// player's team element
 		element = document.getElementById("team" + keepers[i][2]);
-		
+
 		// add the player to their team
 		addPlayer(element, player, position);
 
@@ -503,10 +551,10 @@ function availablePlayers (r, position) {
 	for (var rank = 0; rank < r.length; rank++) {
 
 		// the required data for each player
-		playerRank = r[rank]["ADP "];
-		playerName = r[rank][" Player Name "];
-		playerPosition = r[rank]["Position "];
-		playerTeam = r[rank]["Team "];
+		playerRank = r[rank]["Rank"];
+		playerName = r[rank]["Player"];
+		playerPosition = r[rank]["Pos"];
+		playerTeam = r[rank]["Team"];
 
 		// add a player if they match the position filter, or if all is selected
 		if (playerPosition.toLowerCase() == position || position == 'all') {
@@ -519,7 +567,7 @@ function availablePlayers (r, position) {
 				playerTeam + " ");
 			anchor.appendChild(link);
 			anchor.href = "javascript:void(0)";
-			anchor.id = "p" + r[rank]["ADP "];
+			anchor.id = "p" + r[rank]["ADP"];
 			p.appendChild(text);
 			p.appendChild(anchor);
 			parent.appendChild(p);
@@ -537,7 +585,7 @@ function addPlayerClicks () {
 	// get the number of child elements so you know how many onclicks to add
 	parent = document.getElementById('players');
 	var children = parent.getElementsByTagName('p');
-	
+
 	// add the onclicks
 	for (var i = 0; i < children.length; i++) {
 		children[i].onclick = select;
@@ -553,7 +601,7 @@ function simulate () {
 	if (teams == 10) {
 		forward = ["team1", "team2", "team3", "team4", "team5", "team6", "team7", "team8", "team9", "team10"];
 		reverse = ["team10", "team9", "team8", "team7", "team6", "team5", "team4", "team3", "team2", "team1"];
-	} 
+	}
 	if (teams == 12) {
 		forward = ["team1", "team2", "team3", "team4", "team5", "team6", "team7", "team8", "team9", "team10","team11", "team12"];
 		reverse = ["team12", "team11", "team10", "team9", "team8", "team7", "team6", "team5", "team4", "team3", "team2", "team1"];
@@ -683,7 +731,7 @@ function addPlayer (element, player, position) {
 	// add player to correct paragraph based on position and current roster
 	for (var i = 0; i <= starters; i++) {
 		slot = element.getElementsByTagName('p')[i];
-		
+
 		// add player to starting position, or else the bench
 		if (slot.className == position.toLowerCase() && slot.textContent == "") {
 			text = document.createTextNode(player);
