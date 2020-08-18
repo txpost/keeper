@@ -3,9 +3,8 @@ function startDraft () {
 	// http://localhost/keeper/rankings.json
 	// http://trevorpostma.com/keeper/rankings.json
 	// url is rankings.json hosted on internet
-	// 2017 ranks = https://api.myjson.com/bins/h819l
-	// 2018 ranks = https://api.myjson.com/bins/162bj8
-	var url = 'https://api.myjson.com/bins/16xdlj';
+	// 2020 ranks = https://api.jsonbin.io/b/5f3b260baf209d1016bd98d9
+	var url = 'https://api.jsonbin.io/b/5f3b260baf209d1016bd98d9';
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
