@@ -45,8 +45,8 @@ function config (preset) {
 	//Custom presets for Roxbury17
 	if (preset == "rox17") {
 		keepers.value = 1;
-		teams.value = 10;
-		var players = [["George Kittle", 15], ["Phillip Lindsay", 15], ["Alvin Kamara", 10], ["Kerryon Johnson", 7], ["Adam Thielen", 8], ["Damien Williams", 15], ["Chris Carson", 9], ["Saquon Barkley", 1], ["Derrius Guice", 15], ["O.J. Howard", 15]];
+		teams.value = 12;
+		var players = [["Alvin Kamara", 5], ["D.J. Chark", 15], ["Dalvin Cook", 2], ["Kareem Hunt", 13], ["Jordan Howard", 12], ["Josh Jacobs", 4], ["Patrick Mahomes", 5], ["Austin Ekeler", 6], ["George Kittle", 10], ["Kyler Murray", 12], ["Lamar Jackson", 12], ["Derrick Henry", 4]];
 	};
 	
 	// parent of the all the keeper selection dropdowns
@@ -367,9 +367,9 @@ function displayTeams () {
 		var p5 = document.createElement('p');
 		p5.className = "wr";
 		var p6 = document.createElement('p');
-		p6.className = "wr";
+		p6.className = "te";
 		var p7 = document.createElement('p');
-		p7.className = "te";
+		p7.className = "rb/wr/te";
 		var p8 = document.createElement('p');
 		p8.className = "dst";
 		var p9 = document.createElement('p');
@@ -734,6 +734,11 @@ function addPlayer (element, player, position) {
 		// add player to starting position, or else the bench
 		if (slot.className == position.toLowerCase() && slot.textContent == "") {
 			text = document.createTextNode(player);
+			slot.appendChild(text);
+			break;
+		} else if (slot.className.includes(position.toLowerCase()) && slot.textContent == "") {
+			// Add selected player to flex spot
+			text = document.createTextNode("FLEX: " + player);
 			slot.appendChild(text);
 			break;
 		} else if (i > 7) {
