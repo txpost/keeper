@@ -25,3 +25,4 @@ League Presets
 
 You can preset keepers so that clicking the CLICK HERE FOR KEEPER PRESETS link autofills the keepers for your draft. I plan to make this option available via the Keeper homepage in the future, but for now you'll need to download and install the files on your own server, and edit draft.js.
 
+Originally from trevorpostma
