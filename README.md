@@ -20,6 +20,11 @@ Rankings
 
 Player rankings are downloaded from [Fantasy Pros](http://www.fantasypros.com/nfl/rankings/consensus-cheatsheets.php) as an xls file and then converted to JSON using [Mr. Data Converter](http://shancarter.github.io/mr-data-converter/). Rankings are current as of the last commit for the rankings.json file.
 
+Easy Excel Formula for removing numbers from player positions:
+=IF(LEFT(E2,3)="DST", LEFT(E2,3), IF(LEFT(E2,1)="K", LEFT(E2,1), LEFT(E2,2)))
+
+States that if PosRank starts with DST take 3 letters, if PosRank starts with K take 1 letter, else take 2 letters (RB, WR, TE)
+
 League Presets
 ==============
 
