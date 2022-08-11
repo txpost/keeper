@@ -4,7 +4,7 @@ function startDraft () {
 	// http://trevorpostma.com/keeper/rankings.json
 	// url is rankings.json hosted on internet
 	// 2020 ranks = https://api.jsonbin.io/b/5f3b260baf209d1016bd98d9
-	var url = 'https://api.jsonbin.io/b/5f3b260baf209d1016bd98d9';
+	var url = 'https://raw.githubusercontent.com/manzodan/keeper/master/rankings.json';
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
