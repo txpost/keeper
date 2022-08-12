@@ -46,7 +46,7 @@ function config (preset) {
 	if (preset == "rox17") {
 		keepers.value = 1;
 		teams.value = 12;
-		var players = [["Alvin Kamara", 5], ["D.J. Chark", 15], ["Dalvin Cook", 2], ["Kareem Hunt", 13], ["Jordan Howard", 12], ["Josh Jacobs", 4], ["Patrick Mahomes", 5], ["Austin Ekeler", 6], ["George Kittle", 10], ["Kyler Murray", 12], ["Lamar Jackson", 12], ["Derrick Henry", 4]];
+		var players = [["Joe Mixon", 2], ["Kyle Pitts", 5], ["Deebo Samuel", 8], ["Cooper Kupp", 4], ["Michael Pittman Jr.", 9], ["Ja'Marr Chase", 6], ["Justin Jefferson", 6], ["CeeDee Lamb", 2], ["Joe Burrow", 14], ["Leonard Fournette", 8], ["Josh Allen", 5], ["Travis Etienne Jr.", 14]];
 	};
 	
 	// parent of the all the keeper selection dropdowns
