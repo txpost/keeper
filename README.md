@@ -8,7 +8,7 @@ How to Use Keeper
 
 It's super easy! 
 
-1. Go to http://trevorpostma.com/keeper
+1. Go to https://manzodan.github.io/keeper/ (Hosted by GitHub Pages!)
 2. Select the number of keepers and teams for your league from the dropdowns
 3. Select the players to be kept along with the round they were drafted in, for each team
 4. Click the Start button
@@ -30,4 +30,4 @@ League Presets
 
 You can preset keepers so that clicking the CLICK HERE FOR KEEPER PRESETS link autofills the keepers for your draft. I plan to make this option available via the Keeper homepage in the future, but for now you'll need to download and install the files on your own server, and edit draft.js.
 
-Originally from trevorpostma
+Originally from trevorpostma, updated by manzodan
