@@ -46,7 +46,7 @@ function config (preset) {
 	if (preset == "rox17") {
 		keepers.value = 1;
 		teams.value = 12;
-		var players = [["Joe Mixon", 2], ["Kyle Pitts", 5], ["Deebo Samuel", 8], ["Cooper Kupp", 4], ["Michael Pittman Jr.", 9], ["Ja'Marr Chase", 6], ["Justin Jefferson", 6], ["CeeDee Lamb", 2], ["Joe Burrow", 14], ["Leonard Fournette", 8], ["Josh Allen", 5], ["Travis Etienne Jr.", 14]];
+		var players = [["Jalen Hurts", 7], ["Garrett Wilson", 10], ["Deebo Samuel", 3], ["Amon-Ra St. Brown", 10], ["Christian Watson", 12], ["Amari Cooper", 5], ["Rhamondre Stevenson", 9], ["Tyreek Hill", 2], ["Chris Olave", 9], ["Isiah Pacheco", 11], ["James Cook", 8], ["Brian Robinson Jr.", 10]];
 	};
 	
 	// parent of the all the keeper selection dropdowns
@@ -233,31 +233,31 @@ function configSubmit () {
 	// team needs are stored in an object
 	if (teams.value == 10) {
 		NAMESPACE.teams = {
-			team1: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team2: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team3: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team4: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team5: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team6: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team7: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team8: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team9: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team10: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0}
+			team1: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team2: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team3: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team4: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team5: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team6: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team7: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team8: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team9: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0},
+			team10: {qb: 1, rb: 2, wr: 2, te:1, dst: 0, count: 0}
 		};
 	} else if (teams.value == 12) {
 		NAMESPACE.teams = {
-			team1: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team2: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team3: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team4: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team5: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team6: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team7: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team8: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team9: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team10: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team11: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0},
-			team12: {qb: 1, rb: 2, wr: 2, te:1, dst: 1, count: 0}
+			team1: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team2: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team3: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team4: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team5: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team6: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team7: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team8: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team9: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team10: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team11: {qb: 1, rb: 2, wr: 2, te:1, count: 0},
+			team12: {qb: 1, rb: 2, wr: 2, te:1, count: 0}
 		};
 	} else {
 		NAMESPACE.teams = {};
@@ -371,9 +371,8 @@ function displayTeams () {
 		var p7 = document.createElement('p');
 		p7.className = "rb/wr/te";
 		var p8 = document.createElement('p');
-		p8.className = "dst";
-		var p9 = document.createElement('p');
-		p9.className = "k";
+		p8.className = "rb/wr/te";
+
 
 		// append that shit
 		div.appendChild(anchor);
@@ -385,7 +384,6 @@ function displayTeams () {
 		div.appendChild(p6);
 		div.appendChild(p7);
 		div.appendChild(p8);
-		div.appendChild(p9);
 		parent.appendChild(div);
 	}
 
@@ -504,7 +502,7 @@ function availablePlayersHeader () {
 	var header = document.createElement('h2');
 	header.textContent = "Available Players";
 	var ul = document.createElement('ul');
-	var filters = ["all", "qb", "rb", "wr", "te", "dst", "k"];
+	var filters = ["all", "qb", "rb", "wr", "te"];
 
 	// create a menu item for each filter
 	for (var i = 0; i < filters.length; i++) {
@@ -741,7 +739,7 @@ function addPlayer (element, player, position) {
 			text = document.createTextNode("FLEX: " + player);
 			slot.appendChild(text);
 			break;
-		} else if (i > 7) {
+		} else if (i > 6) {
 			// create the bench slot and add selected player to it
 			para = document.createElement("p");
 			text = document.createTextNode("b. " + player);
