@@ -46,7 +46,7 @@ function config (preset) {
 	if (preset == "rox17") {
 		keepers.value = 1;
 		teams.value = 12;
-		var players = [["Jalen Hurts", 7], ["Garrett Wilson", 10], ["Deebo Samuel", 3], ["Amon-Ra St. Brown", 10], ["Christian Watson", 12], ["Amari Cooper", 5], ["Rhamondre Stevenson", 9], ["Tyreek Hill", 2], ["Chris Olave", 9], ["Isiah Pacheco", 11], ["James Cook", 8], ["Brian Robinson Jr.", 10]];
+		var players = [["Chris Olave", 9], ["Deebo Samuel", 3], ["Amari Cooper", 5], ["Amon-Ra St. Brown", 10], ["James Cook", 8], ["Jalen Hurts", 7], ["Garrett Wilson", 10], ["Christian Watson", 12], ["Isiah Pacheco", 11], ["Rhamondre Stevenson", 9], ["Brian Robinson Jr.", 10], ["Tyreek Hill", 2]];
 	};
 	
 	// parent of the all the keeper selection dropdowns
