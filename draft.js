@@ -668,6 +668,7 @@ function simulate () {
 			// get next player from Available Players
 			parent = document.getElementById('players');
 			nextPlayerNode = parent.getElementsByTagName('p')[nextPlayerCheck];
+			//console.log(nextPlayerNode);
 			nextPlayerAnchor = nextPlayerNode.getElementsByTagName('a')[0];
 			nextPlayer = nextPlayerAnchor.textContent;
 
@@ -676,7 +677,9 @@ function simulate () {
 			player = nextPlayer.substr(nextPlayer.indexOf(' ')+1);
 
 			// check if the drafting team needs the selected player
-			if (NAMESPACE.teams[nextTeam][position] > 0 || (NAMESPACE.teams[nextTeam]["count"] >= 7 && position != 'qb' && position != 'te')) {
+			// MAKE SURE TO CHANGE COUNT IN IF STATEMENT IF POSITIONS CHANGE (i.e. adding kicker back)
+			// 5 comes from 5 positions (not spots) = QB, RB, WR, TE, RB/WR/TE
+			if (NAMESPACE.teams[nextTeam][position] > 0 || (NAMESPACE.teams[nextTeam]["count"] >= 5 && position != 'qb' && position != 'te')) {
 
 				// add pick to draft results;
 				nextPlayerNeeded = true;
